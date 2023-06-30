@@ -1,0 +1,35 @@
+{% extends 'base.tmpl' %}
+
+{% block content %}
+
+{% if items %}
+<div class="pt-12 prose dark:prose-invert hover:prose-a:text-blue-500 max-w-full">
+    <h2>{{ messages("Tags") }}</h2>
+    {% for tag, link in items %}
+    <span>
+    <a href="{{ link }}" class="no-underline">
+        <button class="font-semibold py-2 px-4 mr-4 mb-4 rounded-full text-white dark:text-gray-900 bg-purple-400 hover:bg-purple-500 dark:hover:bg-purple-300">
+            {{ tag }}
+        </button>
+    </a>
+    </span>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if cat_items %}
+<div class="pt-12 prose dark:prose-invert hover:prose-a:text-blue-500 max-w-full">
+    <h2>{{ messages("Categories") }}</h2>
+    {% for text, full_name, path, link, indent_levels, indent_change_before, indent_change_after in cat_hierarchy %}
+    <span>
+    <a href="{{ link }}" class="no-underline">
+        <button class="font-semibold py-2 px-4 mr-4 mb-4 rounded-full text-white dark:text-gray-900 bg-purple-400 hover:bg-purple-500 dark:hover:bg-purple-300">
+            {{ text }}
+        </button>
+    </a>
+    </span>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock content %}

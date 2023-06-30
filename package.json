@@ -1,0 +1,21 @@
+{
+    "name": "staticfy-theme",
+    "version": "1.0.0",
+    "description": "The Nikola staticfy theme for vicchi.org",
+    "main": "index.js",
+    "author": "Gary Gale <gary@vicchi.org>",
+    "license": "BSD-3-Clause",
+    "private": true,
+    "dependencies": {
+        "@catppuccin/tailwindcss": "^0.1.1",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "@tailwindcss/typography": "^0.5.9",
+        "autoprefixer": "^10.4.14",
+        "leaflet": "^1.9.4",
+        "postcss": "^8.4.23",
+        "tailwindcss": "^3.3.2"
+    },
+    "browserslist": [
+        "last 2 versions"
+    ]
+}

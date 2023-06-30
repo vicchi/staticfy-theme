@@ -1,0 +1,45 @@
+{% import 'includes/macros/pagination.tmpl' as pagination with context %}
+{% extends 'base.tmpl' %}
+
+{% block content %}
+<div class="pt-12 prose dark:prose-invert hover:prose-a:text-blue-500 max-w-full">
+    {% if current_page == 0 %}
+    {% include "includes/right-now.tmpl" %}
+    {% endif %}
+    {% for post in posts %}
+        <article class="h-entry">
+            <div class="mb-8 border-b border-gray-200 pb-4 text-gray-800 dark:border-gray-700 dark:text-white">
+                <a class="no-underline" href="{{ post.permalink() }}">
+                    <h2 class="p-name m-0 text-xl font-black leading-tight hover:text-purple-400 dark:text-gray-200 dark:hover:text-purple-400 md:text-2xl">
+                        {{ post.title() }}
+                    </h2>
+                </a>
+                <span class="p-author h-card hidden">{{ blog_title }}</span>
+                <div class="my-2 text-sm">
+                    <time class="dt-published" datetime="{{ post.date.isoformat() }}">
+                        <a class="u-url" href="{{ post.permalink() }}">
+                            {{ post.formatted_date(date_format)|e }}
+                        </a>
+                    </time>
+                </div>
+                {% if index_teasers %}
+                    <div class="p-summary mt-0">{{ post.text(teaser_only=True) }}</div>
+                    <div class="mt-4 flex items-center justify-between">
+                        <a class="flex-none font-normal no-underline" href="{{ post.permalink() }}">Read more &rarr;</a>
+                    </div>
+                {% else %}
+                    <div class="p-summary hidden>{{ post.text(teaser_only=True) }}</div>
+                    <div class="e-content prose dark:prose-invert hover:prose-a:text-blue-500  max-w-full text-gray-800 dark:text-white">
+                        {{ post.text(teaser_only=False) }}
+                    </div>
+                {% endif %}
+            </div>
+        </article>
+    {% endfor %}
+    {{ pagination.new_pager() }}
+</div>
+{% endblock content %}
+
+{% block loadscripts %}
+<script type="module" src="/assets/js/right-now.js"></script>
+{% endblock loadscripts%}

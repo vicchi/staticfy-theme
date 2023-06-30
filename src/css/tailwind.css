@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*noinspection Annotator*/
+::-moz-selection {
+    color: theme(colors.white);
+    background: theme(colors.purple.400);
+}
+
+/*noinspection Annotator*/
+::selection {
+    color: theme(colors.white);
+    background: theme(colors.purple.400);
+}
+
+.toggle-light {
+    @apply inline;
+}
+
+.dark .toggle-light {
+    @apply hidden;
+}
+
+.toggle-dark {
+    @apply hidden;
+}
+
+.dark .toggle-dark {
+    @apply inline;
+}
+
+.icon-inline svg {
+    @apply inline;
+}
+
+.active {
+    @apply text-purple-500 !important;
+}
+
+.active:hover,
+.active:active,
+.active:focus {
+    @apply text-purple-400 !important;
+}
+
+.header-anchor {
+  text-decoration: none !important;
+}
+
+h1 > a.header-anchor {
+  font-weight: 800;
+}
+
+h2 > a.header-anchor {
+  font-weight: 700;
+}
+
+/* See https://codepen.io/sosuke/pen/Pjoqqp  */
+.push-pin {
+    filter: invert(63%) sepia(9%) saturate(6599%) hue-rotate(219deg) brightness(97%) contrast(105%);
+}
+
+.leaflet-control-attribution {
+        @apply text-purple-500 !important;
+}
+
+.leaflet-control-attribution > a {
+        @apply text-purple-500 !important;
+}

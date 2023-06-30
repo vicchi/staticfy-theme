@@ -1,0 +1,7 @@
+[Theme]
+engine = jinja
+parent = base-jinja
+author = Gary Gale
+author_url = https://www.vicchi.org
+license = BSD-3-Clause
+tags = nikola, tailwind, vicchi.org

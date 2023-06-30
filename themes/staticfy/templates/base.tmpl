@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>
+            {% if title %}
+            {{ title }} •
+            {% endif %}
+            {{ blog_title }}
+        </title>
+        <meta charset="utf-8">
+        <meta name='viewport' content='width=device-width'>
+        <meta name="theme-color" content="#a855f7" />
+        <meta name="msapplication-TileColor" content="#da532c">
+        {% block headtags %}{% endblock headtags %}
+        <link rel="canonical" href="{{ blog_url }}{{ permalink }}" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
+        <link rel="manifest" href="/assets/images/site.webmanifest">
+        <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+        <link href="/assets/css/rst_base.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/code.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/tailwind.css" rel="stylesheet" />
+        <link type="application/atom+xml" rel="alternate" title="{{ blog_author }}'s Atom Feed" href="/feeds/feed.atom">
+        <link type="application/rss+xml" rel="alternate" title="{{ blog_author }}'s RSS Feed" href="/feeds/rss.xml">
+        <link rel="me" href="https://www.vicchi.org" />
+        <link rel="me" href="https://www.garygale.com" />
+        {% block headscripts %}{% endblock headscripts%}
+        <script async src="https://analytics.vicchi.org/script.js" data-website-id="37e379d4-8ad0-4a0c-b033-0121b908533a"></script>
+    </head>
+    <body class="dark:text-white bg-white dark:bg-gray-900 font-sans text-gray-800">
+        <div class="min-h-screen flex flex-col">
+            <main class="flex-1 w-10/12 max-w-screen-sm md:max-w-screen-md mx-auto">
+                {% block header %}
+                    {% include "includes/header.tmpl" with context %}
+                {% endblock header %}
+                {% block content %}{% endblock %}
+            </main>
+            {% block footer %}
+                {% include "includes/footer.tmpl" with context %}
+            {% endblock footer %}
+        </div>
+        {% block postscripts %}{% endblock postscripts%}
+        <script type="module" src="/assets/js/site.js"></script>
+        {% block loadscripts %}{% endblock loadscripts%}
+    </body>
+</html>

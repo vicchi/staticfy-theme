@@ -1,0 +1,38 @@
+{% import "includes/macros/icons.tmpl" as icons with context %}
+<footer>
+    <div class="h-card mt-8 pt-8 pb-4 flex gap-3 justify-center w-full">
+        {{ icons.mail() }}
+        {{ icons.github() }}
+        {{ icons.mastodon () }}
+        {{ icons.twitter() }}
+        {{ icons.lastfm() }}
+        {{ icons.listenbrainz() }}
+        {{ icons.trakt() }}
+        {{ icons.flickr() }}
+        {{ icons.linkedin() }}
+        <div class="hidden">
+            <a class="p-name u-url" href="{{ blog_url }}">{{ blog_author }}</a>
+            <img class="u-photo" src="/assets/images/avatar.jpeg" />
+            {% if bio %}
+            <span class="p-note">{{ bio }}</span>
+            {% endif %}
+            <span class="h-geo">
+                <span class="p-latitude">51.426421</span>,
+                <span class="p-longitude">-0.334835</span>
+            </span>
+            <span class="p-locality">Teddington</span>
+            <span class="p-region">London</span>
+            <div class="p-country-name">UK</div>
+        </div>
+    </div>
+    <p class="text-sm text-gray-500 dark:text-gray-100 text-center pb-8">
+        <a class="text-gray-700 hover:text-purple-400 dark:text-gray-200{% if permalink and permalink.endswith('/now/') %} active{% endif %}" href="/pages/now/">Now</a>
+        •
+        <a class="text-gray-700 hover:text-purple-400 dark:text-gray-200{% if permalink and permalink.endswith('/about/') %} active{% endif %}" href="/pages/about/">About</a>
+        •
+        <a class="text-gray-700 hover:text-purple-400 dark:text-gray-200{% if permalink and permalink.endswith('/uses/') %} active{% endif %}" href="/pages/uses/">Uses</a>
+        • {{ blog_author }} • &copy; {{ 'now'|dateparser('%Y') }}
+        • <a rel="license" title="Licensed under a Creative Commons Attribution 4.0 International License" href="http://creativecommons.org/licenses/by/4.0/"><img class="inline fill-current text-gray-700 hover:text-purple-500 dark:text-gray-200 dark:hover:text-purple-400"
+ style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+    </p>
+</footer>

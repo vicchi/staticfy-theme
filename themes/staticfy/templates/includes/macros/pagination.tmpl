@@ -1,0 +1,75 @@
+{#  -*- coding: utf-8 -*- #}
+{% import "includes/macros/icons.tmpl" as icons with context %}
+
+{% macro page_navigation(current_page, page_links, prevlink, nextlink, prev_next_links_reversed, surrounding=5) %}
+<div class="page-navigation">
+    {% for i, link in enumerate(page_links) %}
+        {% if (i - current_page)|abs <= surrounding or i == 0 or i == page_links|length - 1 %}
+            {% if i == current_page %}
+                <span class="current-page">{{ i+1 }}</span>
+            {% else %}
+                <a href="{{ page_links[i] }}">{{ i+1 }}</a>
+            {% endif %}
+        {% elif i == current_page - surrounding - 1 or i == current_page + surrounding + 1 %}
+            <span class="ellipsis">…</span>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro html_pager() %}
+    {% if prevlink or nextlink %}
+        <nav class="postindexpager">
+        <ul class="pager">
+        {% if prevlink %}
+            <li class="previous">
+                <a href="{{ prevlink }}" rel="prev">{{ messages("Newer posts") }}</a>
+            </li>
+        {% endif %}
+        {% if nextlink %}
+            <li class="next">
+                <a href="{{ nextlink }}" rel="next">{{ messages("Older posts") }}</a>
+            </li>
+        {% endif %}
+        </ul>
+        </nav>
+    {% endif %}
+{% endmacro %}
+
+{% macro new_pager() %}
+<nav class="flex justify-between mt-8 items-center">
+    {% if prevlink %}
+        <a href="{{ prevlink }}">
+            <button class="py-2 pr-4 text-purple-500 hover:text-purple-400" aria-label="Previous page">
+                {{ icons.leftarrow() }}
+            </button>
+        </a>
+    {% else %}
+        <button class="py-2 pr-4 cursor-not-allowed disabled:opacity-50" aria-label="Previous page (disabled)" disabled>
+            {{ icons.leftarrow() }}
+        </button>
+    {% endif %}
+
+    <div class="flex flex-row items-center" data-current="{{ current_page }}">
+        <select id="pagination" class="block cursor-pointer w-12 h-12 rounded-full text-white dark:text-gray-900 bg-purple-500 hover:bg-purple-500 dark:hover:bg-purple-300 mr-1 focus-visible:outline-none focus-visible:bg-purple-400 appearance-none text-center" style="text-align-last:center">
+            {% for pagenum, link in enumerate(page_links) %}
+                <option {% if pagenum == current_page %}selected{% endif %} data-link="{{ link }}" value="{{ loop.index0 }}">{{ loop.index }}</option>
+            {% endfor %}
+        </select>
+        <span>of {{ page_links|length }}</span>
+    </div>
+
+
+    {% if nextlink %}
+        <a href="{{ nextlink }}">
+            <button class="py-2 pl-4 text-purple-500 hover:text-purple-400" aria-label="Next page">
+                {{ icons.rightarrow() }}
+            </button>
+        </a>
+    {% else %}
+        <button class="py-2 pl-4 cursor-not-allowed disabled:opacity-50" aria-label="Next page (disabled)" disabled>
+            {{ icons.rightarrow() }}
+        </button>
+    {% endif %}
+</nav>
+{% endmacro %}

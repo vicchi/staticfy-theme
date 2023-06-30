@@ -1,0 +1,29 @@
+{% import "includes/macros/icons.tmpl" as icons with context %}
+
+{% block nav %}
+<nav>
+    <ul class="flex">
+        <li class="mr-6">
+            <a class="text-gray-700 hover:text-purple-400 dark:text-gray-200 dark:hover:text-purple-400{% if permalink and permalink.endswith('/now/') %} active{% endif %}" href="/pages/now/">Now</a>
+        </li>
+        <li class="mr-6">
+            <a class="text-gray-700 hover:text-purple-400 dark:text-gray-200 dark:hover:text-purple-400{% if permalink and permalink.endswith('/about/') %} active{% endif %}" href="/pages/about/">About</a>
+        </li>
+        <li class="mr-6">
+            <a class="text-gray-700 hover:text-purple-400 dark:text-gray-200 dark:hover:text-purple-400{% if permalink and permalink.endswith('/uses/') %} active{% endif %}" href="/pages/uses/">Uses</a>
+        </li>
+        <li class="mr-6">
+            {{ icons.coffee() }}
+        </li>
+        <li class="mr-6">
+            {{ icons.tags() }}
+        </li>
+        <li class="mr-6">
+            {{ icons.rss() }}
+        </li>
+        <li>
+            {{ icons.toggle() }}
+        </li>
+    </ul>
+</nav>
+{% endblock nav %}
