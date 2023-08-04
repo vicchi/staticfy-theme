@@ -1,6 +1,6 @@
 {
     "name": "staticfy-theme",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "The Nikola staticfy theme for vicchi.org",
     "main": "index.js",
     "author": "Gary Gale <gary@vicchi.org>",
