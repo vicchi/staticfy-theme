@@ -45,15 +45,15 @@
 }
 
 .header-anchor {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
-h1 > a.header-anchor {
-  font-weight: 800;
+h1>a.header-anchor {
+    font-weight: 800;
 }
 
-h2 > a.header-anchor {
-  font-weight: 700;
+h2>a.header-anchor {
+    font-weight: 700;
 }
 
 /* See https://codepen.io/sosuke/pen/Pjoqqp  */
@@ -62,9 +62,9 @@ h2 > a.header-anchor {
 }
 
 .leaflet-control-attribution {
-        @apply text-purple-500 !important;
+    @apply text-purple-500 !important;
 }
 
-.leaflet-control-attribution > a {
-        @apply text-purple-500 !important;
+.leaflet-control-attribution>a {
+    @apply text-purple-500 !important;
 }

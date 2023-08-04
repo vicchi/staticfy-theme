@@ -25,7 +25,8 @@
         <link type="application/rss+xml" rel="alternate" title="{{ blog_author }}'s RSS Feed" href="/feeds/rss.xml">
         <link rel="me" href="https://www.vicchi.org" />
         <link rel="me" href="https://www.garygale.com" />
-        {% block headscripts %}{% endblock headscripts%}
+        <link rel="authorization_endpoint" href="https://indieauth.com/auth" />
+        <link rel="token_endpoint" href="https://tokens.indieauth.com/token" />        {% block headscripts %}{% endblock headscripts%}
         <script async src="https://analytics.vicchi.org/script.js" data-website-id="37e379d4-8ad0-4a0c-b033-0121b908533a"></script>
     </head>
     <body class="dark:text-white bg-white dark:bg-gray-900 font-sans text-gray-800">
@@ -43,5 +44,9 @@
         {% block postscripts %}{% endblock postscripts%}
         <script type="module" src="/assets/js/site.js"></script>
         {% block loadscripts %}{% endblock loadscripts%}
+        <div class="hidden h-app">
+            <img height="32" width="32" src="/assets/images/favicon-32x32.png" class="u-logo /">
+            <a href="{{ blog_url }}" class="u-url">{{ blog_url}}</a>
+        </div>
     </body>
 </html>
